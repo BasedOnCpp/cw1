@@ -81,7 +81,7 @@ struct Text read_user_command()
         command.size = wcslen(command.data);
     }
     command.size = wcslen(command.data);
-    result = split(&command);
+    result = split(&command, L" \f\t\n\r\v");
     destroy_sentence(&command);
 
     return result;

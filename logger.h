@@ -27,3 +27,5 @@ void print_sentence_content(FILE* stream, const struct Sentence* structure, int 
 void exception_different_texts(struct Text* expected, struct Text* cmp);
 
 void print_hint();
+
+void print_words();

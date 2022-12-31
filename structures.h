@@ -16,3 +16,17 @@ struct Text
 	size_t size;
 	size_t capacity;
 };
+
+
+struct Info
+{
+    struct Sentence* data;
+    size_t count;
+};
+
+struct Info_arr
+{
+    struct Info* data;
+    size_t size;
+    size_t capacity;
+};

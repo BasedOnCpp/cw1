@@ -46,7 +46,7 @@ struct Sentence substr(const struct Sentence* self, size_t begin, size_t end); /
 //replace every pattern with replacement
 bool replace(struct Sentence* self, const struct Sentence* pattern, const struct Sentence* replacement); //unit tests ok
 
-struct Text split(struct Sentence *sentence);
+struct Text split(struct Sentence *sentence, const wchar_t* delim);
 
 //appends lhs from left and rhs from right to word
 bool prepare_word(struct Sentence* word, const struct Sentence* lhs, const struct Sentence* rhs);//unit tests ok
@@ -104,3 +104,5 @@ struct Sentence get_isalnum(const struct Sentence* sentence); //unit test ok
 
 //check if 2 sentences are anagrams
 bool is_anagrams(const struct Sentence* lhs, const struct Sentence* rhs); //unit test ok
+
+void destroy(struct Info_arr *mapper);

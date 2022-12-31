@@ -193,7 +193,7 @@ bool replace(struct Sentence* self, const struct Sentence* pattern, const struct
 	return true;
 }
 
-struct Text split(struct Sentence *sentence)
+struct Text split(struct Sentence *sentence, const wchar_t* delim)
 {
 	struct Text result = create_empty_text();
 	if(is_empty_sentence(sentence))
@@ -201,9 +201,9 @@ struct Text split(struct Sentence *sentence)
 		return result;
 	}
 	struct Sentence new_sent = create_empty_sentence();
-	for(wchar_t* state = NULL, *token = wcstok(sentence->data, L" \f\t\n\r\v", &state);
+	for(wchar_t* state = NULL, *token = wcstok(sentence->data, delim, &state);
 	token != NULL
-	;token = wcstok(NULL, L" \f\t\n\r\v", &state))
+	;token = wcstok(NULL, delim, &state))
 	{
 		new_sent = create_sentence(token);
 		if(!add_to_text(&result, &new_sent))
@@ -563,4 +563,16 @@ bool is_anagrams(const struct Sentence* lhs, const struct Sentence* rhs)
 	destroy_sentence(&rr);
 
 	return answer;
+}
+
+void destroy(struct Info_arr *mapper)
+{
+    for(size_t i = 0; i < mapper->size; ++i)
+    {
+        destroy_sentence(mapper->data[i].data);
+        free(mapper->data[i].data);
+    }
+    free(mapper->data);
+    mapper->data = NULL;
+    mapper->size = mapper->capacity = 0;
 }

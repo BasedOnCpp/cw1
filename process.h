@@ -2,7 +2,13 @@
 #include "structures.h"
 #include <stdint.h>
 
+extern struct Info_arr mapper;
+
 bool prepare_text(struct Text* text);
+
+void update_frequency(struct Text* text);
+
+void sort_text_by_frequency(struct Text* text);
 
 //recursion
 void erase_repeated_sentences(struct Text* text); //unit tests ok

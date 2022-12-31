@@ -46,6 +46,10 @@ void call_handler(struct Text *text) {
                 }
                 print_text(text);
             }
+            else if (!wcscmp(command.data->data, L"5")) {
+                sort_text_by_frequency(text);
+                print_words();
+            }
             else {
                 print_incorrect_input_error();
             }
@@ -80,6 +84,6 @@ void call_handler(struct Text *text) {
 
         destroy_text(&command);
     }
-
+    destroy(&mapper);
     destroy_text(&command);
 }

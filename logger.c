@@ -1,6 +1,8 @@
 #include "logger.h"
 #include "text.h"
 
+extern struct Info_arr mapper;
+
 void print_out_of_memory_error()
 {
 	fprintf(stderr, "Error while allocation memory\n");
@@ -96,10 +98,21 @@ void print_hint()
            "| 3 - replaces each vowel with |\n"
            "| the next two letters in the  |\n"
            "| alphabet                     |\n"
+           "| 5 - sort text by frequency   |\n"
            "| 4 <word> <new_word> replaces |\n"
            "| each word with new_word      |\n"
            "| p - prints text              |\n"
            "| h - prints print_hint        |\n"
            "--------------------------------\n"
     );
+}
+
+void print_words()
+{
+
+    for(size_t i = 0; i < mapper.size; ++i)
+    {
+        printf("%ls ", mapper.data[i].data->data);
+    }
+    printf("\n");
 }
